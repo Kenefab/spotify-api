@@ -123,23 +123,34 @@ router.get("/callback", (req, res) => {
     .catch((error) => {
       console.error("Error getting Tokens:", error);
       res.send(`Error getting Tokens: ${error}`);
-    });
+    })
+    .then(() => {
+      spotifyApi.getMe().then(
+        (data) => {
+          console.log("Some information about the authenticated user", data.body);
+        },
+        (err) => {
+          console.log("Something went wrong!", err);
+        }
+      );
+    })
+    .catch(err => console.log('get me error', err))
 });
 
 // spotifyApi.setAccessToken(accessToken);
 /////////////////////////////////////////////////////////////functions accessing the api
-const getMe = () => {
-  spotifyApi.getMe().then(
-    (data) => {
-      console.log("Some information about the authenticated user", data.body);
-    },
-    (err) => {
-      console.log("Something went wrong!", err);
-    }
-  );
-};
+// const getMe = () => {
+  // spotifyApi.getMe().then(
+  //   (data) => {
+  //     console.log("Some information about the authenticated user", data.body);
+  //   },
+  //   (err) => {
+  //     console.log("Something went wrong!", err);
+  //   }
+  // );
+// };
 
-getMe();
+// getMe();
 
 // const getMyPlaylist = () => {
 //   // Get a user's playlists
