@@ -4,6 +4,7 @@ const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const router = express.Router();
 const axios = require("axios").default;
+require('dotenv').config()
 
 //static files
 app.use(express.static("public"));
@@ -42,9 +43,13 @@ const scopes = [
   "user-follow-modify",
 ];
 
+const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
+const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET
+
+
 const spotifyApi = new SpotifyWebApi({
-  clientId: "8008c1ac980e4c9db3e3810b158e4ad7",
-  clientSecret: "60894bb751ac4f37b716c2bcb8fc5746",
+  clientId: SPOTIFY_CLIENT_ID,
+  clientSecret: SPOTIFY_CLIENT_SECRET,
   redirectUri: "http://localhost:3000/callback",
 });
 
@@ -93,9 +98,7 @@ router.get("/callback", (req, res) => {
   spotifyApi
     .authorizationCodeGrant(code)
     .then((data) => {
-      const access_token = data.body["access_token"];
-      const refresh_token = data.body["refresh_token"];
-      const expires_in = data.body["expires_in"];
+      const { access_token, refresh_token, expires_in } = data.body;
 
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
