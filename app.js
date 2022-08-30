@@ -4,7 +4,7 @@ const app = express();
 const SpotifyWebApi = require("spotify-web-api-node");
 const router = express.Router();
 const axios = require("axios").default;
-require('dotenv').config()
+require("dotenv").config();
 
 //static files
 app.use(express.static("public"));
@@ -43,9 +43,8 @@ const scopes = [
   "user-follow-modify",
 ];
 
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
-const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET
-
+const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
 const spotifyApi = new SpotifyWebApi({
   clientId: SPOTIFY_CLIENT_ID,
@@ -127,27 +126,40 @@ router.get("/callback", (req, res) => {
     .then(() => {
       spotifyApi.getMe().then(
         (data) => {
-          console.log("Some information about the authenticated user", data.body);
+          console.log(
+            "Some information about the authenticated user",
+            data.body
+          );
         },
         (err) => {
           console.log("Something went wrong!", err);
         }
       );
     })
-    .catch(err => console.log('get me error', err))
+    .catch((err) => console.log("get me error", err))
+    .then(() => {
+      spotifyApi.getArtistTopTracks("3tVQdUvClmAT7URs9V3rsp", "NG").then(
+        (data) => {
+          console.log("Your Top Artists!", data.body);
+        },
+        (err) => {
+          console.log("Something went wrong while getting playlists!", err);
+        }
+      );
+    });
 });
 
 // spotifyApi.setAccessToken(accessToken);
 /////////////////////////////////////////////////////////////functions accessing the api
 // const getMe = () => {
-  // spotifyApi.getMe().then(
-  //   (data) => {
-  //     console.log("Some information about the authenticated user", data.body);
-  //   },
-  //   (err) => {
-  //     console.log("Something went wrong!", err);
-  //   }
-  // );
+// spotifyApi.getMe().then(
+//   (data) => {
+//     console.log("Some information about the authenticated user", data.body);
+//   },
+//   (err) => {
+//     console.log("Something went wrong!", err);
+//   }
+// );
 // };
 
 // getMe();
