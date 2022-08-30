@@ -29,7 +29,9 @@ async function spotifyAuth(req, res) {
             console.log(
                 `Sucessfully retreived access token. Expires in ${expires_in} s.`
             );
-            res.send("Success! Access and Refresh tokens have been retrieved");
+            res.render('index', {
+                message: 'Login successful, proceed to home page'
+            });
 
             setInterval(async () => {
                 const data = await spotifyApi.refreshAccessToken();
