@@ -10,18 +10,13 @@
     <h1>Artists Top Track!</h1>
 
     <ul>
-      <% tracks.forEach((track)=> { %>
-          <li>
-              <h2>
-                Track name: <%= track.name %>
-              </h2>
-              <p>
-                popularity:  <%= track.popularity %>
-              </p>
-          </li>
-          <hr />
+      <% playlists.forEach((playlist)=> { %>
+      <li>
+        <h2>Playlist Name: <%= playlist.name %></h2>
+        <p>Description: <%= playlist.description %></p>
+      </li>
+      <hr />
       <% }) %>
     </ul>
-
   </body>
 </html>

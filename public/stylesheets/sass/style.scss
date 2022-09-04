@@ -1,0 +1,95 @@
+//////////////////colors
+$white: #ffff;
+$blackBackground: #0d0d0d;
+
+/////////////fonts
+$font-poppins: "Poppins", sans-serif;
+
+/************************************************* base styles ***************************************/
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: $white;
+}
+
+body {
+  padding-bottom: 0;
+  margin: 0;
+  background: url("../images/body-background.png") no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/***************************************** end of base styles ******************************************/
+
+/************************************************* header and playlist-sidebar styling ***************************************/
+.header-playlists-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  justify-content: space-between;
+
+  .menu-bar {
+    width: 100%;
+
+    nav {
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+
+      .logo-container {
+        min-width: max-content;
+
+        flex-shrink: 1;
+        flex-grow: 1;
+
+        > img {
+          width: 100%;
+        }
+      }
+
+      .navbar-brand-container {
+        width: 100%;
+
+        #navbar-brand {
+          width: 100%;
+          color: $white;
+          font-family: $font-poppins;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 69px;
+          line-height: 80px;
+
+          flex-shrink: 1;
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+
+  #playlist-sidebar {
+    background: $blackBackground;
+    border-radius: 20px;
+    width: 40%;
+    height: 90vh;
+    align-self: center;
+
+    p {
+      vertical-align: middle;
+      text-align: center;
+      line-height: 90vh;
+    }
+  }
+}
+/************************************************* header and playlist-sidebar styling ***************************************/
