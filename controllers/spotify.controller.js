@@ -100,7 +100,7 @@ async function getMyPlaylist(req, res) {
     })
     .then(
       (data) => {
-        // console.log("Retrieved playlists", data.body.items);
+        console.log("Retrieved playlists", data.body.items);
 
         res.render("artistsTopTracks", {
           playlists: data.body.items,

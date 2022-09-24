@@ -65,16 +65,41 @@ body {
 .header-playlists-container #playlist-sidebar {
   background: #0d0d0d;
   border-radius: 20px;
-  width: 40%;
+  width: 60%;
   height: 90vh;
   align-self: center;
 }
-.header-playlists-container #playlist-sidebar p {
+.header-playlists-container #playlist-sidebar h6 {
   vertical-align: middle;
   text-align: center;
   line-height: 90vh;
 }
 
-/************************************************* header and playlist-sidebar styling ***************************************/
+/************************************************* end of header and playlist-sidebar styling ***************************************/
+/************************************************* playlist-grid-container styling ***************************************/
+.header-playlists-grid {
+  width: 100%;
+}
+.header-playlists-grid .playlists-grid-container {
+  width: 90%;
+  margin: 50px 0 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+.header-playlists-grid .playlists-grid-container .playlist-wrap {
+  width: 100%;
+  transition: 0.5s;
+}
+.header-playlists-grid .playlists-grid-container .playlist-wrap img {
+  width: 100%;
+}
+.header-playlists-grid .playlists-grid-container .playlist-wrap:hover {
+  transform: scale(1.3);
+}
+.header-playlists-grid .playlists-grid-container .playlist-wrap:active {
+  border: 2px solid rgba(2, 161, 29, 0.8);
+  border-radius: 10px;
+}
 
 /*# sourceMappingURL=style.css.map */

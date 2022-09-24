@@ -29,4 +29,3 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/", spotifyRouter);
 
 module.exports = app;
-
