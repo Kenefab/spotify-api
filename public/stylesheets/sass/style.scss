@@ -1,17 +1,22 @@
 //////////////////colors
 $white: #ffff;
 $blackBackground: #0d0d0d;
+$darkFadedGray: rgba(255, 255, 255, 0.05);
+$gray: rgba(255, 255, 255, 0.47);
 
 /////////////fonts
 $font-poppins: "Poppins", sans-serif;
 
-/************************************************* base styles ***************************************/
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+
+//////////mixins
+@mixin poppins-font-block ($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-poppins;
+  font-weight: $font-weight;
 }
 
+/************************************************* base styles ***************************************/
 * {
   margin: 0px;
   padding: 0px;
@@ -50,7 +55,6 @@ body {
 
       .logo-container {
         min-width: max-content;
-
         flex-shrink: 1;
         flex-grow: 1;
 
@@ -78,18 +82,138 @@ body {
     }
   }
 
+ 
+
+  #playlist-sidebar::-webkit-scrollbar{
+    width: 0.5rem;
+  }
+
+  #playlist-sidebar::-webkit-scrollbar-track{
+    margin-block: 0.5em;
+  }
+
+  #playlist-sidebar::-webkit-scrollbar-thumb{
+    background: $darkFadedGray;
+    border-radius: 100vw;
+    height: 5px;
+  }
+  
   #playlist-sidebar {
     background: $blackBackground;
     border-radius: 20px;
     width: 60%;
-    height: 90vh;
-    align-self: center;
-    
+    padding-top: 20px;
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  
+    // h6{
+    //   vertical-align: middle;
+    //   text-align: center;
+    //   line-height: 90vh;
+    // }
 
-    h6{
-      vertical-align: middle;
-      text-align: center;
-      line-height: 90vh;
+    .current-playlist{
+      
+
+      #current-playlist-head{
+        padding: 0 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2rem;
+        
+        .playlist-image-container{
+          width: 50%;
+          flex-shrink: 1;
+          flex-grow: 1;
+          align-self: center;
+
+          > img{
+            width: 100%;
+          }
+        }
+
+        .playlist-info{
+          width: 100%;
+          flex-shrink: 1;
+          flex-grow: 1;
+
+          display: flex;
+          flex-direction: column;
+          padding-left: 5px;
+
+          .playlist-title{
+            color: $white;
+            @include poppins-font-block(20px, 600, 30px);
+          }
+
+          .playlist-description{
+            color: $gray;
+            @include poppins-font-block(16px, 400, 26px);
+          }
+
+          .playlist-total-songs{
+            @include poppins-font-block(18px, 400, 28px);
+          }
+        }
+      }
+
+      hr{
+        border: solid 2px $darkFadedGray;
+        width: 100%;
+      }
+
+      .song-list-wrap{
+        padding: 0 40px;
+
+        li{
+          padding-left: 10px;
+          @include poppins-font-block(16px, 400, 26px);
+          
+
+          .song{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            padding: 15px 0;
+            align-items: center;
+  
+            .song-image-wrap{
+              float: left;
+              width: 80%;
+
+              > img{
+                width: 100%;
+              }
+            }
+            
+            .song-info-wrap{
+              align-self: center;
+              text-align: left;
+              padding-top: 15px;
+              
+              .song-title{
+                @include poppins-font-block(18px, 600, 28px);
+                color: $white;
+              }
+              .artist-name{
+                margin-bottom: 10px;
+                @include poppins-font-block(16px, 400, 26px);
+                color: $gray;
+              }
+            }
+  
+            .time-wrap{
+              text-align: right;
+              @include poppins-font-block(16px, 400, 26px);
+              letter-spacing: 0.15rem;
+            }
+          }
+        }
+
+        
+      }
     }
   }
 }
@@ -112,8 +236,10 @@ body {
     .playlist-wrap{
       width: 100%;
       transition: 0.5s;
+      
       img{
         width: 100%;
+       
       }
 
       &:hover{

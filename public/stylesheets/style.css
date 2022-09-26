@@ -3,12 +3,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
   color: white;
 }
 
@@ -62,17 +56,125 @@ body {
   flex-shrink: 1;
   flex-grow: 1;
 }
+.header-playlists-container #playlist-sidebar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.header-playlists-container #playlist-sidebar::-webkit-scrollbar-track {
+  margin-block: 0.5em;
+}
+.header-playlists-container #playlist-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 100vw;
+  height: 5px;
+}
 .header-playlists-container #playlist-sidebar {
   background: #0d0d0d;
   border-radius: 20px;
   width: 60%;
-  height: 90vh;
+  padding-top: 20px;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head .playlist-image-container {
+  width: 50%;
+  flex-shrink: 1;
+  flex-grow: 1;
   align-self: center;
 }
-.header-playlists-container #playlist-sidebar h6 {
-  vertical-align: middle;
-  text-align: center;
-  line-height: 90vh;
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head .playlist-image-container > img {
+  width: 100%;
+}
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head .playlist-info {
+  width: 100%;
+  flex-shrink: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+}
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head .playlist-info .playlist-title {
+  color: white;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head .playlist-info .playlist-description {
+  color: rgba(255, 255, 255, 0.47);
+  font-size: 16px;
+  line-height: 26px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.header-playlists-container #playlist-sidebar .current-playlist #current-playlist-head .playlist-info .playlist-total-songs {
+  font-size: 18px;
+  line-height: 28px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.header-playlists-container #playlist-sidebar .current-playlist hr {
+  border: solid 2px rgba(255, 255, 255, 0.05);
+  width: 100%;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap {
+  padding: 0 40px;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li {
+  padding-left: 10px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 15px 0;
+  align-items: center;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song .song-image-wrap {
+  float: left;
+  width: 80%;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song .song-image-wrap > img {
+  width: 100%;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song .song-info-wrap {
+  align-self: center;
+  text-align: left;
+  padding-top: 15px;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song .song-info-wrap .song-title {
+  font-size: 18px;
+  line-height: 28px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: white;
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song .song-info-wrap .artist-name {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.47);
+}
+.header-playlists-container #playlist-sidebar .current-playlist .song-list-wrap li .song .time-wrap {
+  text-align: right;
+  font-size: 16px;
+  line-height: 26px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.15rem;
 }
 
 /************************************************* end of header and playlist-sidebar styling ***************************************/
