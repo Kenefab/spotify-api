@@ -5,6 +5,7 @@ const {
   home,
   getArtistsTopTracks,
   getMyPlaylist,
+  top100Nigeria,
 } = require("../controllers/spotify.controller");
 const { authenticate } = require("../middleware/auth.middleware");
 

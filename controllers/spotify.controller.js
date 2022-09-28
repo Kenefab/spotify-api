@@ -83,7 +83,7 @@ async function getArtistsTopTracks(req, res) {
     .then((data) => {
       console.log(data.body.tracks);
 
-      res.render("artistsTopTracks", {
+      res.render("playlist", {
         tracks: data.body.tracks,
       });
     });
