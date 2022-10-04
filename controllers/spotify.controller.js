@@ -112,10 +112,25 @@ async function getMyPlaylist(req, res) {
     );
 }
 
+async function getArtistsTopTracksApiExample(req, res) {
+  spotifyApi
+    .clientCredentialsGrant()
+    .then(function (data) {
+      spotifyApi.setAccessToken(data.body.access_token);
+
+      // Get the most popular tracks by David Bowie in Great Britain
+      return spotifyApi.getArtistTopTracks("0oSGxfWSnnOXhD2fKuz2Gy", "GB");
+    })
+    .then((data) => {
+      res.status(200).json(data.body.tracks);
+    });
+}
+
 module.exports = {
   redirectToAuth,
   spotifyAuth,
   home,
   getArtistsTopTracks,
   getMyPlaylist,
+  getArtistsTopTracksApiExample
 };
